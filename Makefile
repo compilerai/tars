@@ -19,3 +19,9 @@ install_boost: boost_1_79_0.tar.bz2
 	# rm temp files
 	rm -rf boost_1_79_0
 	rm boost_1_79_0.tar.bz2
+
+install_borland: borlandC_5_02.tgz
+	dpkg --add-architecture i386
+	apt-get install wine32
+	mkdir -p /opt
+	tar -xzf $^ -C /opt
