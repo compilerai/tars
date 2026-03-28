@@ -1,15 +1,7 @@
-FILES = boost_1_79_0.tar.bz2
-
-all: $(FILES)
+all: install_boost install_borland
 
 boost_1_79_0.tar.bz2:
 	cat boost_1_79_0.tar.bz2.1 boost_1_79_0.tar.bz2.2 | tee $@ >/dev/null
-
-.PHONY: distclean
-distclean: clean_boost
-
-clean_boost:
-	rm -f boost_1_79_0.tar.bz2
 
 install_boost: boost_1_79_0.tar.bz2
 	# uninstall system boost
@@ -21,7 +13,11 @@ install_boost: boost_1_79_0.tar.bz2
 	rm boost_1_79_0.tar.bz2
 
 install_borland: borlandC_5_02.tgz
-	dpkg --add-architecture i386
-	apt-get install wine32
 	mkdir -p /opt
 	tar -xzf $^ -C /opt
+
+.PHONY: distclean
+distclean: clean_boost
+
+clean_boost:
+	rm -f boost_1_79_0.tar.bz2
