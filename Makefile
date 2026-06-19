@@ -9,7 +9,7 @@ install_boost: boost_1_79_0.tar.bz2
 	# install our boost
 	tar xf boost_1_79_0.tar.bz2 && cd boost_1_79_0 \
                               && ./bootstrap.sh --prefix=/usr/local \
-                              && ./b2 && ./b2 install -sZSTD_INCLUDE="/usr/include" -sZSTD_LIBPATH="/usr/lib/x86_64-linux-gnu" --with-iostreams
+                              && ./b2 && ./b2 install -sZSTD_INCLUDE="/usr/include" -sZSTD_LIBPATH="/usr/lib/x86_64-linux-gnu" --with-system --with-iostreams --with-serialization --with-filesystem
 	# rm temp files
 	rm -rf boost_1_79_0
 	rm boost_1_79_0.tar.bz2
